@@ -1,0 +1,284 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background-color: #000000;
+    color: #F6F4FA;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Devil Night Moon Keyframe Animations (GPU-accelerated transform & opacity only) */
+@keyframes devilMoonFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-6px, 10px, 0) scale(1.022);
+  }
+}
+
+@keyframes devilCoronaPulse {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.96;
+    transform: scale(1.055);
+  }
+}
+
+@keyframes devilCloudBackDrift {
+  0% {
+    transform: translate3d(-10%, 0, 0);
+  }
+  50% {
+    transform: translate3d(10%, -5px, 0);
+  }
+  100% {
+    transform: translate3d(-10%, 0, 0);
+  }
+}
+
+@keyframes devilCloudFrontDrift {
+  0% {
+    transform: translate3d(12%, 0, 0);
+  }
+  50% {
+    transform: translate3d(-12%, 4px, 0);
+  }
+  100% {
+    transform: translate3d(12%, 0, 0);
+  }
+}
+
+@keyframes devilCloudFrontAltDrift {
+  0% {
+    transform: translate3d(-14%, 2px, 0);
+  }
+  50% {
+    transform: translate3d(14%, -3px, 0);
+  }
+  100% {
+    transform: translate3d(-14%, 2px, 0);
+  }
+}
+
+@keyframes devilStarTwinkle {
+  0%, 100% {
+    opacity: 0.28;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.98;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes devilStarfieldDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-18px, 10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes devilEmberFloat {
+  0% {
+    transform: translate3d(0, 22px, 0) scale(0.85);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(16px, -48px, 0) scale(1.12);
+    opacity: 0;
+  }
+}
+
+@keyframes devilShootingStar {
+  0%, 86%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-32deg) scaleX(0);
+    opacity: 0;
+  }
+  88% {
+    opacity: 0.95;
+    transform: translate3d(-40px, 25px, 0) rotate(-32deg) scaleX(1);
+  }
+  93% {
+    opacity: 0;
+    transform: translate3d(-260px, 162px, 0) rotate(-32deg) scaleX(0.3);
+  }
+}
+
+@keyframes devilScreenFadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 4px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-devil-moon {
+  animation: devilMoonFloat 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-devil-corona {
+  animation: devilCoronaPulse 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-devil-cloud-back {
+  animation: devilCloudBackDrift 54s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-devil-cloud-front {
+  animation: devilCloudFrontDrift 38s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-devil-cloud-front-alt {
+  animation: devilCloudFrontAltDrift 46s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-devil-starfield {
+  animation: devilStarfieldDrift 64s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-devil-twinkle {
+  animation: devilStarTwinkle 4.2s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.animate-devil-ember {
+  animation: devilEmberFloat 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-devil-shooting-star {
+  animation: devilShootingStar 16s linear infinite;
+  will-change: transform, opacity;
+}
+
+.devil-screen-transition {
+  animation: devilScreenFadeIn 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Gothic Blood-Moon Translucent Surface Helpers */
+.devil-panel {
+  background: linear-gradient(165deg, rgba(10, 4, 15, 0.62) 0%, rgba(4, 2, 7, 0.72) 100%);
+  border: 1px solid rgba(225, 29, 72, 0.28);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.82), inset 0 1px 0 rgba(248, 250, 252, 0.06);
+}
+
+/* Reduced Motion Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-devil-moon,
+  .animate-devil-corona,
+  .animate-devil-cloud-back,
+  .animate-devil-cloud-front,
+  .animate-devil-cloud-front-alt,
+  .animate-devil-starfield,
+  .animate-devil-twinkle,
+  .animate-devil-ember,
+  .animate-devil-shooting-star,
+  .devil-screen-transition {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Custom subtle scrollbars for AMOLED blood-moon canvas */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D122B;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6B1D4A;
+}
+
+/* MOON AMOLED Blood-Moon Leaflet / OpenStreetMap Styling */
+.moon-dark-map .leaflet-tile-pane {
+  filter: brightness(0.82) invert(1) contrast(1.12) hue-rotate(252deg) saturate(0.62);
+}
+
+.leaflet-container {
+  background-color: #050208 !important;
+  font-family: var(--font-sans) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(5, 2, 8, 0.82) !important;
+  color: #CBD5E1 !important;
+  font-size: 9px !important;
+  border-top-left-radius: 8px;
+  padding: 2px 6px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #FDA4AF !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: rgba(14, 5, 22, 0.92) !important;
+  color: #F8FAFC !important;
+  border-color: rgba(225, 29, 72, 0.35) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: rgba(159, 18, 57, 0.85) !important;
+  color: #FFFFFF !important;
+}
+

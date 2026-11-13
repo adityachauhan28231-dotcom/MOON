@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#2E1065" />
+      <stop offset="55%" stop-color="#0B0914" />
+      <stop offset="100%" stop-color="#050508" />
+    </radialGradient>
+    <linearGradient id="moonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F3FF" />
+      <stop offset="45%" stop-color="#C4B5FD" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bgGlow)" />
+  <rect x="12" y="12" width="488" height="488" rx="100" fill="none" stroke="#6D28D9" stroke-opacity="0.35" stroke-width="6" />
+  <path
+    d="M312 116C228.5 116 160 184.5 160 268C160 351.5 228.5 420 312 420C346.4 420 378.1 408.5 403.6 389.2C338.8 382.4 288 327.7 288 261C288 194.3 338.8 139.6 403.6 132.8C378.1 121.9 346.4 116 312 116Z"
+    fill="url(#moonGrad)"
+    transform="translate(-28, -12)"
+  />
+  <circle cx="348" cy="168" r="10" fill="#DDD6FE" opacity="0.85" />
+  <circle cx="382" cy="214" r="6" fill="#A78BFA" opacity="0.7" />
+</svg>
